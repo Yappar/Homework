@@ -1,3 +1,4 @@
+
 def filter_by_state(list_of_dict: list, state: str = "EXECUTED") -> list:
     """
         функция, которая принимает список словарей и опционально значение для ключа
@@ -25,4 +26,3 @@ if __name__ == "__main__":
     ]
     print(filter_by_state(list_of_dict))
     print(sort_by_date(list_of_dict))
-
