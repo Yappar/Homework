@@ -1,15 +1,21 @@
 
 def filter_by_state(list_of_dict: list, state: str = "EXECUTED") -> list:
+
     """
         функция, которая принимает список словарей и опционально значение для ключа
     state(по умолчанию 'EXECUTED') и возвращает новый список словарей,
      содержащий только те словари, у которых ключ state соответствует указанному значению
     """
     finish_list_dict = []
-    for dict in list_of_dict:
-        if dict["state"] == state:
-            finish_list_dict.append(dict)
-    return finish_list_dict
+    for dict_l in list_of_dict:
+        if dict_l.get('state'):
+            if dict_l["state"] == state:
+                finish_list_dict.append(dict_l)
+
+    if finish_list_dict == []:
+        return "Введены некорректные данные"
+    else:
+        return finish_list_dict
 
 
 def sort_by_date(list_of_dict: list, sort_p=True) -> list:
@@ -24,5 +30,5 @@ if __name__ == "__main__":
         {"id": 594226727, "state": "CANCELED", "date": "2018-09-12T21:27:25.241689"},
         {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
     ]
-    print(filter_by_state(list_of_dict))
-    print(sort_by_date(list_of_dict))
+    # print(filter_by_state(list_of_dict))
+    # # print(sort_by_date(list_of_dict))
