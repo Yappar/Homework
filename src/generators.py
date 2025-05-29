@@ -50,38 +50,42 @@ transactions = [
 
 
 def filter_by_currency(list_transactions: list, currency: str) -> str | Generator[Any, Any, None]:
-    """функция получает на вход список словарей с данными о транзакции и выдает на выход генератор только
-    тех транзакций которые содержат определенный тип валюты ("currency")
-    :rtype: object"""
-    return (
-        transaction
-        for transaction in list_transactions
-        if transaction["operationAmount"]["currency"]["code"] == currency
-    )
+    """функция принимает на вход список словарей представляющих транзакции и возвращает итератор, который
+    поочередно выдает транзакции, где валюта операции соответствует заданной (например, USD).("currency")
+    """
+    return (tran for tran in list_transactions if tran["operationAmount"]["currency"]["code"] == currency)
 
 
-# usd_transactions = filter_by_currency(transactions, "USD")
-# for _ in range(5):
-#     print(next(usd_transactions))
+# usd_trans = filter_by_currency(transactions, "USD")
+# for _ in range(2):
+#     print(next(usd_trans))
+#     print(next(usd_trans))
 
 
 def transaction_descriptions(list_transactions: list) -> Generator[Any, Any, None]:
-    """функция получает на вход список словарей с данными о транзакции и выдает на выход генератор описаний (значений
+    """функция получает на вход список словарей с транзакциями и
+    возвращает описание каждой операции по очереди (значений
     по ключу "description")"""
-    return (transaction["description"] for transaction in list_transactions)
+    for transaction in list_transactions:
+        yield (transaction["description"])
 
 
-# descriptions = transaction_descriptions(transactions)
-# for _ in range(5):
-#     print(next(descriptions))
+# desc = transaction_descriptions(transactions)
+# print(next(desc))
+# print(next(desc))
+# print(next(desc))
+# print(next(desc))
+# print(next(desc))
 
 
 def card_number_generator(start: int, stop: int) -> list[str]:
-    """функция генератор который выдает на выход номера банковский карт"""
+    """функция генератор, которая выдает номера банковских карт в формате
+    XXXX XXXX XXXX XXXX, где X — цифра номера карты. Генератор может сгенерировать
+    номера карт в заданном диапазоне от 0000 0000 0000 0001 до 9999 9999 9999 9999"""
     card_number_iter = [x for x in range(start, stop + 1)]
     card_number = []
     for number in card_number_iter:
-        card = f"{number:016d}"
+        card = str(number).zfill(16)
         card = f"{card[0:4]} {card[4:8]} {card[8:12]} {card[12:16]}"
         card_number.append(card)
     return card_number
