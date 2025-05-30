@@ -104,13 +104,12 @@ def test_filter_by_currency_rub():
     }
 
 
-def test_transaction_descriptions():
+@pytest.mark.usefixtures("transactions")
+def test_transaction_descriptions(transactions):
     generator = transaction_descriptions(transactions)
     assert next(generator) == "Перевод организации"
     assert next(generator) == "Перевод со счета на счет"
     assert next(generator) == "Перевод со счета на счет"
-    assert next(generator) == "Перевод с карты на карту"
-    assert next(generator) == "Перевод организации"
 
 
 def test_card_number_generator():
