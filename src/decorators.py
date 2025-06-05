@@ -13,18 +13,21 @@ def log(filename=None):
                     filename=filename,
                     level=logging.DEBUG,
                     filemode="a",
-                    format="%(asctime)s %(levelname)s %(message)s",
+                    format="%(asctime)s %(name)s %(levelname)s %(funcName)s %(message)s",
                 )
                 try:
                     func(*args, **kwargs)
-                    logging.debug(f"{func.__name__} is ok")
+                    result = func(*args, **kwargs)
+                    logging.debug(f"{func.__name__} is ok, result is {result}")
+                    return result
                 except Exception:
                     logging.debug(f"{func.__name__} error: TypeError. Inputs {args}, {kwargs}")
                     raise Exception("error")
             elif filename is None:
                 try:
                     func(*args)
-                    print(f"{func.__name__} is ok")
+                    result = func(*args, **kwargs)
+                    print(f"{func.__name__} is ok, result is {result}")
                 except Exception:
                     print(f"{func.__name__} error: TypeError. Inputs {args}, {kwargs}")
                     raise Exception("error")
@@ -32,6 +35,7 @@ def log(filename=None):
         return wrapper
 
     return my_decorator
+
 
 
 """Проверяем работу декоратора"""
@@ -43,7 +47,7 @@ def my_function(x, y):
 
 
 #
-# my_function(1,"3")
+my_function(1,2)
 # # #
 # # my_function ok
 # #
