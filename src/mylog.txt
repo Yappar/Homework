@@ -1,0 +1,13 @@
+2025-06-05 11:09:42,361 DEBUG my_function is ok
+2025-06-05 11:10:05,055 DEBUG my_function error: TypeError. Inputs (1, '2'), {}
+2025-06-05 11:47:15,154 DEBUG my_function error: TypeError. Inputs (1,), {}
+2025-06-05 12:03:46,158 DEBUG my_function error: TypeError. Inputs (1, '2'), {}
+2025-06-05 15:13:28,651 DEBUG my_function error: TypeError. Inputs (1, '3'), {}
+2025-06-05 15:13:43,539 DEBUG my_function is ok, result is 3
+2025-06-05 15:14:46,396 DEBUG my_function is ok, result is 3
+2025-06-05 15:18:28,212 DEBUG wrapper my_function is ok, result is 3
+2025-06-05 15:21:58,263 DEBUG 2025-06-05 15:21:58,263 wrapper my_function is ok, result is 3
+2025-06-05 15:23:30,198 DEBUG root wrapper my_function is ok, result is 3
+2025-06-05 15:26:41,446 root DEBUG wrapper my_function is ok, result is 3
+2025-06-05 15:31:57,666 root DEBUG wrapper my_function is ok, result is 3
+2025-06-05 15:32:25,872 root DEBUG wrapper my_function is ok, result is 3
