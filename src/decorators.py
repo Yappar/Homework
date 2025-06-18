@@ -1,7 +1,7 @@
 import logging
 
 
-def log(filename=None):
+def log(filename="../logs/masks.log"):
     """Декоратор должен принимать необязательный аргумент filename,
     который определяет, куда будут записываться логи (в файл или в консоль)
     (если в параметрах декоратора указан файл)"""
@@ -12,11 +12,11 @@ def log(filename=None):
                 logging.basicConfig(
                     filename=filename,
                     level=logging.DEBUG,
-                    filemode="a",
+                    filemode="w",
                     format="%(asctime)s %(name)s %(levelname)s %(funcName)s %(message)s",
                 )
                 try:
-                    func(*args, **kwargs)
+                    func(*args)
                     result = func(*args, **kwargs)
                     logging.debug(f"{func.__name__} is ok, result is {result}")
                     return result
@@ -31,22 +31,23 @@ def log(filename=None):
                 except Exception:
                     print(f"{func.__name__} error: TypeError. Inputs {args}, {kwargs}")
                     raise Exception("error")
+            return None
 
         return wrapper
 
     return my_decorator
 
 
-"""Проверяем работу декоратора"""
+# """Проверяем работу декоратора"""
 
 
-@log(filename="mylog.txt")
-def my_function(x, y):
-    return x + y
+# @log(filename="mylog.txt")
+# def my_function(x, y):
+#     return x + y
 
 
 #
-my_function(1, 2)
+# my_function(1, 2)
 # # #
 # # my_function ok
 # #
