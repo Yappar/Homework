@@ -13,7 +13,9 @@ def test_operations_transform_1():
 
 
 def test_operations_transform_2():
-    """Используем mock_open для имитации открытия файла"""
+    """
+    Используем mock_open для имитации открытия файла
+    """
     mock_file = mock_open(read_data="{ this is not valid JSON }")
     with patch("builtins.open", mock_file):
         result = operations_transform("dummy_path")
