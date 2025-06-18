@@ -37,7 +37,6 @@ def log(filename=None):
     return my_decorator
 
 
-
 """Проверяем работу декоратора"""
 
 
@@ -47,7 +46,7 @@ def my_function(x, y):
 
 
 #
-my_function(1,2)
+my_function(1, 2)
 # # #
 # # my_function ok
 # #
