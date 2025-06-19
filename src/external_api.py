@@ -7,8 +7,6 @@ from dotenv import load_dotenv
 # import json
 
 
-
-
 def exchange_currency(transaction: dict):
     """
     Функция, которая принимает на вход транзакцию(в качестве аргумента словарь из списка словарей
