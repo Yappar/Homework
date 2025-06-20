@@ -11,7 +11,7 @@ def log(filename="../logs/masks.log"):
             if filename is not None:
                 logging.basicConfig(
                     filename=filename,
-                    level=logging.DEBUG,
+                    level=logging.INFO,
                     filemode="w",
                     format="%(asctime)s %(name)s %(levelname)s %(funcName)s %(message)s",
                 )
@@ -38,7 +38,7 @@ def log(filename="../logs/masks.log"):
     return my_decorator
 
 
-# """Проверяем работу декоратора"""
+"""Проверяем работу декоратора"""
 
 
 # @log(filename="mylog.txt")
@@ -46,11 +46,7 @@ def log(filename="../logs/masks.log"):
 #     return x + y
 
 
-#
 # my_function(1, 2)
-# # #
-# # my_function ok
-# #
-# # my_function error: "тип ошибки". Inputs: (1, 2), {}
-#
-# # print(my_function(1, 2))
+# print(my_function(1, 2))
+# my_function ok
+# my_function error: "тип ошибки". Inputs: (1, 2), {}

@@ -38,10 +38,10 @@ def get_mask_account(mask_account: str) -> str:
         return f"{mask_account[:-20]}**{mask_account[-4:]}"
 
 
-print(get_mask_account("Счет 64686473678894779589"))
+# print(get_mask_account("Счет 64686473678894779589"))
 
-# if __name__ == "__main__":
-#     card_number = "7158300734726758"
-#     print(get_mask_card_number(card_number))
-#     mask_account = "35383033474447895560"
-#     print(get_mask_account(mask_account))
+if __name__ == "__main__":
+    #     card_number = "7158300734726758"
+    #     print(get_mask_card_number(card_number))
+    mask_account = input("введите счет:Счет 64686473678894779589")
+    print(get_mask_account(mask_account))
