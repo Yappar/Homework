@@ -1,3 +1,5 @@
+from openpyxl.cell import cell
+
 from src.widget import get_date, mask_account_card
 import re
 from src.filter import process_bank_search
@@ -136,10 +138,10 @@ def operation_report(sorted_list = discription_sort()):
         discription = operation.get("description")
 
         account_from_string = operation.get("from")
-        if account_from_string is not None:
-            account_from = mask_account_card(account_from_string) + " -> "
-        else:
+        if account_from_string is None:
             account_from = ""
+        else:
+            account_from = mask_account_card(account_from_string) + " -> "
 
         account_to_string = operation.get("to")
         if account_to_string is not None:

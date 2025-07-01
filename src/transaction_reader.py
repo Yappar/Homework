@@ -36,7 +36,7 @@ def read_func_Excel(file_path: str) -> list[dict]:
     """Функция принимает файл Excel и возвращает список словарей"""
     try:
         with open(file_path):
-            df = pd.read_excel(file_path)
+            df = pd.read_excel(file_path, dtype=str)
             # Загружаем Excel-файл в DataFrame
             dict_list = df.to_dict(orient="records")
             # Преобразуем DataFrame в список словарей
@@ -51,9 +51,9 @@ def read_func_Excel(file_path: str) -> list[dict]:
         return []
 
 
-# if __name__ == '__main__':
-# transact_new = read_func_CSV("../data/transactions.csv")
-# print(transact_new)
-# print(read_func_Excel("../data/transactions_excel.xlsx"))
-# print(df.shape)
-# print(df.head())
+if __name__ == '__main__':
+    # transact_new = read_func_CSV("../data/transactions.csv")
+    # print(transact_new)
+    print(read_func_Excel("../data/transactions_excel.xlsx"))
+    # print(df.shape)
+    # print(df.head())

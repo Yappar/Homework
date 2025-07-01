@@ -17,12 +17,14 @@ logger.addHandler(file_handler)
 # @log(filename="../logs/masks.log")
 def get_mask_card_number(card_number: str) -> str:
     """Функция маскировки номера банковской карты"""
-
-    if (
-        card_number == "" or card_number[-17] != " " or card_number[-16:].isdigit() is False
-    ):
+    if isinstance(card_number, float):
+        card_number = str(card_number)
+    if card_number == "":
+        return "no input data!"
+    elif card_number == "" or card_number[-17] != " " or card_number[-16:].isdigit() is False:
         logger.info("введен некорректный номер карты")
         return "number was entered incorrectly"
+
     else:
         logger.info(" маскировка номера банковской карты")
         return f"{card_number[:-17]} {card_number[-16:-12]} {card_number[-12:-10]}** **** {card_number[-4:]}"

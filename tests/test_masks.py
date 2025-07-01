@@ -7,7 +7,7 @@ from src.masks import get_mask_account, get_mask_card_number
     "card_number, expected",
     [
         ("Maestro 1596837868705199", "Maestro 1596 83** **** 5199"),
-        ("", "number was entered incorrectly"),
+        ("", "no input data!"),
         ("Visa Platinum 89909visa3665229", "number was entered incorrectly"),
     ],
 )
