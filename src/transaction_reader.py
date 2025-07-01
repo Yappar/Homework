@@ -2,6 +2,8 @@ import csv
 
 import pandas as pd
 
+from src.decorators import log
+
 
 # @log(filename='../data/logs/tran_reader.log')
 def read_func_CSV(file_path: str) -> list[dict]:
@@ -9,24 +11,24 @@ def read_func_CSV(file_path: str) -> list[dict]:
     Функция принимает файл CSV и возвращает список словарей
     заголовок (id;state;date;amount;currency_name;currency_code;from;to;description)
     """
-    transact_list = []
-    with open(file_path) as f:
-        reader = csv.DictReader(f, delimiter=";")
-        for row in reader:
-            my_dict = {
-                "id": row["id"],
-                "state": row["state"],
-                "date": row["date"],
-                "amount": row["amount"],
-                "currency_name": row["currency_name"],
-                "currency_code": row["currency_code"],
-                "from": row["from"],
-                "to": row["to"],
-                "description": row["description"],
-            }
-            transact_list.append(my_dict)
-    print(transact_list)
-    return transact_list
+
+    try:
+        with open(file_path, encoding="utf-8") as csv_file:
+            reader = csv.DictReader(csv_file)
+            transaction_list = []
+            for row in reader:
+                for head, content in row.items():
+                    head_list = head.split(";")
+                    content_list = content.split(";")
+                    transaction_dict = {}
+                    for i in range(len(head_list)):
+                        key = head_list[i]
+                        value = content_list[i]
+                        transaction_dict[key] = value
+                transaction_list.append(transaction_dict)
+            return transaction_list
+    except Exception:
+        return []
 
 
 # @log(filename="../data/logs/tran_reader.log")
@@ -52,6 +54,6 @@ def read_func_Excel(file_path: str) -> list[dict]:
 # if __name__ == '__main__':
 # transact_new = read_func_CSV("../data/transactions.csv")
 # print(transact_new)
-print(read_func_Excel("../data/transactions_excel.xlsx"))
+# print(read_func_Excel("../data/transactions_excel.xlsx"))
 # print(df.shape)
 # print(df.head())
