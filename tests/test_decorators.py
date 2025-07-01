@@ -27,4 +27,4 @@ def test_log_consol(capsys):
 
     my_function(1, 2)
     captured = capsys.readouterr()
-    assert captured.out == "my_function is ok\n"
+    assert captured.out == "my_function is ok, result is 3\n"

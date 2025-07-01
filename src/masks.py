@@ -7,7 +7,8 @@ logger = logging.getLogger("masks")
 logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler(
     "C:\\Users\\yappa\\Homework\\logs\\masks.log"
-)  # C:\\Users\\yappa\\Homework\\logs\\masks.log или ../logs/masks.log
+)
+# C:\\Users\\yappa\\Homework\\logs\\masks.log или ../logs/masks.log
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
@@ -18,8 +19,8 @@ def get_mask_card_number(card_number: str) -> str:
     """Функция маскировки номера банковской карты"""
 
     if (
-        card_number == "" or card_number[-16:].isdigit() is False
-    ):  # or card_number[-17] != " " #-Убрал условие для решения домащки 13_2
+        card_number == "" or card_number[-17] != " " or card_number[-16:].isdigit() is False
+    ):
         logger.info("введен некорректный номер карты")
         return "number was entered incorrectly"
     else:
@@ -42,11 +43,7 @@ def get_mask_account(mask_account: str) -> str:
         logger.info(" маскировка номера счета")
         return f"{mask_account[:-20]}**{mask_account[-4:]}"
 
-
-# print(get_mask_account("Счет 64686473678894779589"))
-
 if __name__ == "__main__":
-    mask_account = "Счет 64686473678894779589"
-    print(get_mask_account(mask_account))
+    print(get_mask_account("Счет 64686473678894779589"))
     logger.info("печать результаты функции маскировки")
     print(get_mask_card_number("Maestro 1596837868705199"))
