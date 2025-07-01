@@ -24,8 +24,6 @@ def test_mask_account_card(c_b_account: str, expected: str) -> None:
     [
         ("2024-03-11T02:26:18.671407", "11.03.2024"),
         ("2023-09-05T11:30:32Z", "05.09.2023"),
-
-
     ],
 )
 def test_get_date(data_input: str, expected: str) -> None:

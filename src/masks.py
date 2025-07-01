@@ -1,13 +1,8 @@
 import logging
 
-from src.decorators import log
-
-
 logger = logging.getLogger("masks")
 logger.setLevel(logging.INFO)
-file_handler = logging.FileHandler(
-    "C:\\Users\\yappa\\Homework\\logs\\masks.log"
-)
+file_handler = logging.FileHandler("C:\\Users\\yappa\\Homework\\logs\\masks.log")
 # C:\\Users\\yappa\\Homework\\logs\\masks.log или ../logs/masks.log
 file_formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s: %(message)s")
 file_handler.setFormatter(file_formatter)
@@ -44,6 +39,7 @@ def get_mask_account(mask_account: str) -> str:
     else:
         logger.info(" маскировка номера счета")
         return f"{mask_account[:-20]}**{mask_account[-4:]}"
+
 
 if __name__ == "__main__":
     print(get_mask_account("Счет 64686473678894779589"))

@@ -40,10 +40,12 @@ def log(filename=None):  # "../logs/masks.log"
 
 """Проверяем работу декоратора"""
 
-if __name__=='__main__':
+if __name__ == "__main__":
+
     @log("C:\\Users\\yappa\\Homework\\src\\mylog.txt")
     def my_function(x, y):
         return x + y
+
     my_function(1, 2)
     print(my_function(1, 2))
 # my_function ok

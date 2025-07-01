@@ -1,8 +1,6 @@
 import json
 import logging
 
-from src.decorators import log
-
 logger = logging.getLogger("utils")
 logger.setLevel(logging.INFO)
 file_handler = logging.FileHandler("C:\\Users\\yappa\\Homework\\logs\\utils.log")

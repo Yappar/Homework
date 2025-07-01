@@ -1,7 +1,8 @@
 import re
+from collections import Counter
+
 from src.transaction_reader import read_func_CSV, read_func_Excel
 from src.utils import operations_transform
-from collections import Counter
 
 
 def process_bank_search(operations: str, search_string: str):
@@ -50,5 +51,8 @@ def process_bank_operations(operations: str, categories: list):
 
 if __name__ == "__main__":
     # print(process_bank_search("C:\\Users\\yappa\\Homework\\data\\transactions_excel.xlsx", "PENDING"))
-    print(process_bank_operations('../data/operations.json',
-                      ['Перевод организации', 'Перевод с карты на карту', 'Перевод со счета на счет']))
+    print(
+        process_bank_operations(
+            "../data/operations.json", ["Перевод организации", "Перевод с карты на карту", "Перевод со счета на счет"]
+        )
+    )
