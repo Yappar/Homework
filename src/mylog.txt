@@ -1,0 +1,2 @@
+2025-07-01 18:27:19,742 root DEBUG wrapper my_function is ok, result is 3
+2025-07-01 18:27:19,742 root DEBUG wrapper my_function is ok, result is 3

@@ -1,7 +1,7 @@
 import logging
 
 
-def log(filename="../logs/masks.log"):
+def log(filename=None):  # "../logs/masks.log"
     """Декоратор должен принимать необязательный аргумент filename,
     который определяет, куда будут записываться логи (в файл или в консоль)
     (если в параметрах декоратора указан файл)"""
@@ -11,7 +11,7 @@ def log(filename="../logs/masks.log"):
             if filename is not None:
                 logging.basicConfig(
                     filename=filename,
-                    level=logging.INFO,
+                    level=logging.DEBUG,
                     filemode="w",
                     format="%(asctime)s %(name)s %(levelname)s %(funcName)s %(message)s",
                 )
@@ -40,13 +40,13 @@ def log(filename="../logs/masks.log"):
 
 """Проверяем работу декоратора"""
 
+if __name__ == "__main__":
 
-# @log(filename="mylog.txt")
-# def my_function(x, y):
-#     return x + y
+    @log("C:\\Users\\yappa\\Homework\\src\\mylog.txt")
+    def my_function(x, y):
+        return x + y
 
-
-# my_function(1, 2)
-# print(my_function(1, 2))
+    my_function(1, 2)
+    print(my_function(1, 2))
 # my_function ok
 # my_function error: "тип ошибки". Inputs: (1, 2), {}

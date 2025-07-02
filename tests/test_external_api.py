@@ -11,7 +11,7 @@ def test_exchange_currency_1():
     Тестирование функции, если валюта (currency) в
     транзакции в рублях
     """
-    trans = operations_transform("../data/operations.json")[0]
+    trans = operations_transform("C:\\Users\\yappa\\Homework\\data\\operations.json")[0]
     result = exchange_currency(trans)
     assert result == 31957.58
 
